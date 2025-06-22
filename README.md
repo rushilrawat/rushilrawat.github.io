@@ -16,7 +16,7 @@
 - 🎨 **Framer Motion** scroll-triggered animations  
 - 📱 **Fully responsive** on desktop, tablet, and mobile  
 - 🔗 **Project gallery** with live demos & GitHub links  
-- 🛠️ **Contact section** with “Share My Portfolio” and downloadable résumé  
+- 🛠️ **Contact section** with “Share My Portfolio” and downloadable résumé (coming soon)
 - 🏷️ **SEO-friendly metadata** (Open Graph, Twitter Cards, canonical URL)  
 
 ---
