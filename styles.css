@@ -22,7 +22,7 @@
   --footer-text: #e8e4dd;
   --font-sans: Inter, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   --font-display: "Bodoni 72", Didot, "Iowan Old Style", Georgia, serif;
-  --site-width: 1088px;
+  --site-width: 1160px;
 }
 
 .dark {
@@ -91,7 +91,7 @@ svg {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 48px;
+  gap: 52px;
   min-height: 34px;
   color: var(--text);
 }
@@ -125,8 +125,8 @@ svg {
 
 .theme-toggle {
   position: relative;
-  width: 38px;
-  height: 22px;
+  width: 48px;
+  height: 26px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--text);
@@ -134,19 +134,59 @@ svg {
   cursor: pointer;
 }
 
+.theme-icon {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  color: var(--background);
+  transform: translateY(-50%);
+}
+
+.theme-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.theme-sun {
+  left: 6px;
+  color: var(--text);
+}
+
+.theme-moon {
+  right: 6px;
+}
+
 .theme-knob {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 16px;
-  height: 16px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--background);
   transition: transform 180ms ease;
 }
 
 .dark .theme-knob {
-  transform: translateX(16px);
+  transform: translateX(22px);
+}
+
+.dark .theme-sun {
+  color: var(--background);
+}
+
+.dark .theme-moon {
+  color: var(--text);
 }
 
 .page-band {
@@ -157,13 +197,14 @@ svg {
 }
 
 .hero {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+  grid-template-columns: minmax(0, 0.88fr) minmax(520px, 1.12fr);
   align-items: center;
-  gap: 72px;
-  min-height: 704px;
+  gap: 96px;
+  min-height: 780px;
   padding-top: 56px;
-  padding-bottom: 56px;
+  padding-bottom: 82px;
   border-bottom: 1px solid var(--divider);
 }
 
@@ -313,15 +354,15 @@ svg {
 
 .portrait-wrap {
   position: relative;
-  min-height: 548px;
+  min-height: 660px;
 }
 
 .portrait-circle {
   position: absolute;
-  top: 82px;
+  top: 52px;
   left: 50%;
-  width: 430px;
-  height: 430px;
+  width: 560px;
+  height: 560px;
   border-radius: 50%;
   background: var(--olive-circle);
   transform: translateX(-50%);
@@ -335,8 +376,8 @@ svg {
 
 .portrait-dots {
   position: absolute;
-  top: 44px;
-  right: 28px;
+  top: 26px;
+  right: 18px;
   width: 156px;
   height: 164px;
   opacity: 0.72;
@@ -344,14 +385,14 @@ svg {
 
 .portrait-wrap img {
   position: absolute;
-  top: 94px;
+  top: 4px;
   left: 50%;
-  width: 398px;
-  height: 428px;
-  border-radius: 48% 48% 46% 46%;
-  object-fit: cover;
-  object-position: 50% 34%;
-  filter: saturate(0.62) contrast(1.08) brightness(1.03);
+  width: 590px;
+  height: 650px;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: saturate(0.56) contrast(1.08) brightness(1.04);
   mix-blend-mode: multiply;
   transform: translateX(-50%);
 }
@@ -359,6 +400,33 @@ svg {
 .dark .portrait-wrap img {
   filter: saturate(0.46) contrast(1.06) brightness(0.88);
   mix-blend-mode: normal;
+}
+
+.scroll-cue {
+  position: absolute;
+  right: 50%;
+  bottom: 22px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1;
+  transform: translateX(50%);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.scroll-cue:hover {
+  border-color: var(--accent);
+  background: var(--light-olive);
+  transform: translate(50%, 2px);
 }
 
 .section-with-rule {
@@ -687,7 +755,7 @@ svg {
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 34px;
+    gap: 42px;
     min-height: 0;
     padding-top: 58px;
   }
@@ -701,24 +769,24 @@ svg {
   }
 
   .portrait-wrap {
-    min-height: 430px;
+    min-height: 520px;
   }
 
   .portrait-circle {
-    top: 30px;
-    width: 360px;
-    height: 360px;
+    top: 34px;
+    width: 430px;
+    height: 430px;
   }
 
   .portrait-dots {
-    top: 0;
-    right: 18%;
+    top: 8px;
+    right: 12%;
   }
 
   .portrait-wrap img {
-    top: 42px;
-    width: 334px;
-    height: 354px;
+    top: 6px;
+    width: 430px;
+    height: 500px;
   }
 
   .experience-item {
@@ -883,17 +951,17 @@ svg {
   }
 
   .portrait-wrap {
-    min-height: 348px;
+    min-height: 392px;
   }
 
   .portrait-circle {
-    width: 292px;
-    height: 292px;
+    width: 320px;
+    height: 320px;
   }
 
   .portrait-wrap img {
-    width: 270px;
-    height: 292px;
+    width: 320px;
+    height: 376px;
   }
 
   .project-item {
