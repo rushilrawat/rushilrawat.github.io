@@ -355,15 +355,15 @@ svg {
 
 .portrait-wrap {
   position: relative;
-  min-height: 660px;
+  min-height: clamp(460px, 52vw, 660px);
 }
 
 .portrait-circle {
   position: absolute;
   top: 52px;
   left: 50%;
-  width: 560px;
-  height: 560px;
+  width: clamp(360px, 42vw, 560px);
+  height: clamp(360px, 42vw, 560px);
   border-radius: 50%;
   background: var(--olive-circle);
   transform: translateX(-50%);
@@ -388,8 +388,8 @@ svg {
   position: absolute;
   top: 4px;
   left: 50%;
-  width: 590px;
-  height: 650px;
+  width: clamp(360px, 44vw, 590px);
+  height: clamp(420px, 48vw, 650px);
   border-radius: 0;
   object-fit: contain;
   object-position: center bottom;
@@ -1156,6 +1156,7 @@ svg {
     gap: 42px;
     min-height: 0;
     padding-top: 58px;
+    padding-bottom: 74px;
   }
 
   .hero-copy {
@@ -1167,24 +1168,24 @@ svg {
   }
 
   .portrait-wrap {
-    min-height: 520px;
+    min-height: clamp(430px, 66vw, 520px);
   }
 
   .portrait-circle {
     top: 34px;
-    width: 430px;
-    height: 430px;
+    width: min(70vw, 430px);
+    height: min(70vw, 430px);
   }
 
   .portrait-dots {
     top: 8px;
-    right: 12%;
+    right: max(2%, 24px);
   }
 
   .portrait-wrap img {
     top: 6px;
-    width: 430px;
-    height: 500px;
+    width: min(74vw, 430px);
+    height: min(86vw, 500px);
   }
 
   .experience-item {
@@ -1232,6 +1233,11 @@ svg {
     gap: 18px;
     overflow-x: auto;
     padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-link {
@@ -1260,6 +1266,10 @@ svg {
     gap: 12px;
   }
 
+  .hero-copy {
+    max-width: 100%;
+  }
+
   .btn {
     min-width: 136px;
     padding: 0 18px;
@@ -1273,6 +1283,33 @@ svg {
 
   .currently ul {
     gap: 12px 18px;
+  }
+
+  .portrait-wrap {
+    min-height: 430px;
+  }
+
+  .portrait-circle {
+    top: 30px;
+    width: min(84vw, 360px);
+    height: min(84vw, 360px);
+  }
+
+  .portrait-dots {
+    top: 0;
+    right: 0;
+    width: 108px;
+    height: 112px;
+  }
+
+  .portrait-wrap img {
+    top: 8px;
+    width: min(88vw, 350px);
+    height: min(102vw, 410px);
+  }
+
+  .scroll-cue {
+    bottom: 10px;
   }
 
   .section-with-rule,
@@ -1468,17 +1505,18 @@ svg {
   }
 
   .portrait-wrap {
-    min-height: 392px;
+    min-height: 360px;
   }
 
   .portrait-circle {
-    width: 320px;
-    height: 320px;
+    top: 26px;
+    width: min(84vw, 308px);
+    height: min(84vw, 308px);
   }
 
   .portrait-wrap img {
-    width: 320px;
-    height: 376px;
+    width: min(88vw, 302px);
+    height: min(104vw, 352px);
   }
 
   .project-item {
