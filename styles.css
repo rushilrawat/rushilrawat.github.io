@@ -355,18 +355,22 @@ svg {
 
 .portrait-wrap {
   position: relative;
-  min-height: clamp(460px, 52vw, 660px);
+  width: min(100%, clamp(390px, 45vw, 610px));
+  aspect-ratio: 1;
+  justify-self: center;
+  isolation: isolate;
 }
 
 .portrait-circle {
   position: absolute;
-  top: 52px;
-  left: 50%;
-  width: clamp(360px, 42vw, 560px);
-  height: clamp(360px, 42vw, 560px);
+  top: 42%;
+  left: 52%;
+  z-index: 0;
+  width: 72%;
+  aspect-ratio: 1;
   border-radius: 50%;
   background: var(--olive-circle);
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .portrait-dots,
@@ -377,6 +381,7 @@ svg {
 
 .portrait-dots {
   position: absolute;
+  z-index: 1;
   top: 26px;
   right: 18px;
   width: 156px;
@@ -386,21 +391,14 @@ svg {
 
 .portrait-wrap img {
   position: absolute;
-  top: 4px;
-  left: 50%;
-  width: clamp(360px, 44vw, 590px);
-  height: clamp(420px, 48vw, 650px);
-  border-radius: 0;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
   object-fit: contain;
-  object-position: center bottom;
-  filter: saturate(0.56) contrast(1.08) brightness(1.04);
-  mix-blend-mode: multiply;
-  transform: translateX(-50%);
-}
-
-.dark .portrait-wrap img {
-  filter: saturate(0.46) contrast(1.06) brightness(0.88);
-  mix-blend-mode: normal;
+  object-position: center;
+  filter: none;
 }
 
 .scroll-cue {
@@ -1152,40 +1150,65 @@ svg {
   }
 
   .hero {
-    grid-template-columns: 1fr;
-    gap: 42px;
+    grid-template-columns: max-content clamp(230px, 32vw, 300px);
+    align-items: center;
+    gap: 22px 16px;
     min-height: 0;
     padding-top: 58px;
     padding-bottom: 74px;
   }
 
   .hero-copy {
-    max-width: 590px;
+    display: contents;
+  }
+
+  .eyebrow {
+    grid-column: 1 / -1;
   }
 
   .hero h1 {
-    font-size: 92px;
+    grid-column: 1;
+    font-size: 82px;
+  }
+
+  .hero-text {
+    grid-column: 1 / -1;
+    max-width: 620px;
+    margin-top: 4px;
+  }
+
+  .hero-actions {
+    grid-column: 1 / -1;
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .btn {
+    min-width: 140px;
+    padding: 0 18px;
+  }
+
+  .availability,
+  .currently {
+    grid-column: 1 / -1;
   }
 
   .portrait-wrap {
-    min-height: clamp(430px, 66vw, 520px);
-  }
-
-  .portrait-circle {
-    top: 34px;
-    width: min(70vw, 430px);
-    height: min(70vw, 430px);
+    grid-column: 2;
+    grid-row: 2;
+    width: clamp(230px, 32vw, 300px);
   }
 
   .portrait-dots {
     top: 8px;
-    right: max(2%, 24px);
+    right: 0;
+    width: 122px;
+    height: 132px;
   }
 
   .portrait-wrap img {
-    top: 6px;
-    width: min(74vw, 430px);
-    height: min(86vw, 500px);
+    width: 100%;
+    height: 100%;
   }
 
   .experience-item {
@@ -1245,8 +1268,11 @@ svg {
   }
 
   .hero {
-    padding-top: 46px;
-    padding-bottom: 44px;
+    grid-template-columns: max-content clamp(132px, 36vw, 152px);
+    align-items: center;
+    gap: 14px 8px;
+    padding-top: 42px;
+    padding-bottom: 42px;
   }
 
   .eyebrow {
@@ -1255,30 +1281,41 @@ svg {
   }
 
   .hero h1 {
-    font-size: 70px;
+    font-size: 58px;
   }
 
   .hero-text {
-    font-size: 17px;
+    grid-column: 1 / -1;
+    max-width: 36rem;
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.52;
   }
 
   .hero-actions {
+    grid-column: 1 / -1;
+    flex-wrap: nowrap;
     gap: 12px;
-  }
-
-  .hero-copy {
-    max-width: 100%;
+    margin-top: 14px;
   }
 
   .btn {
+    flex: 1 1 0;
     min-width: 136px;
     padding: 0 18px;
   }
 
   .availability {
+    grid-column: 1 / -1;
+    margin-top: 18px;
     font-size: 11px;
     letter-spacing: 0.12em;
     white-space: normal;
+  }
+
+  .currently {
+    grid-column: 1 / -1;
+    margin-top: 20px;
   }
 
   .currently ul {
@@ -1286,26 +1323,16 @@ svg {
   }
 
   .portrait-wrap {
-    min-height: 430px;
-  }
-
-  .portrait-circle {
-    top: 30px;
-    width: min(84vw, 360px);
-    height: min(84vw, 360px);
+    width: clamp(132px, 36vw, 152px);
   }
 
   .portrait-dots {
-    top: 0;
-    right: 0;
-    width: 108px;
-    height: 112px;
+    display: none;
   }
 
   .portrait-wrap img {
-    top: 8px;
-    width: min(88vw, 350px);
-    height: min(102vw, 410px);
+    width: 100%;
+    height: 100%;
   }
 
   .scroll-cue {
@@ -1501,22 +1528,26 @@ svg {
 
 @media (max-width: 440px) {
   .hero h1 {
-    font-size: 58px;
+    font-size: 52px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
+
+  .btn {
+    min-width: 0;
+    padding: 0 12px;
+    font-size: 13px;
   }
 
   .portrait-wrap {
-    min-height: 360px;
-  }
-
-  .portrait-circle {
-    top: 26px;
-    width: min(84vw, 308px);
-    height: min(84vw, 308px);
+    width: clamp(132px, 36vw, 144px);
   }
 
   .portrait-wrap img {
-    width: min(88vw, 302px);
-    height: min(104vw, 352px);
+    width: 100%;
+    height: 100%;
   }
 
   .project-item {

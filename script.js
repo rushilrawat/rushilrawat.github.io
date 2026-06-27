@@ -1,14 +1,36 @@
 const root = document.documentElement;
 const toggle = document.querySelector(".theme-toggle");
-const savedTheme = localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
 
-root.classList.toggle("dark", shouldUseDark);
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem("theme");
+  } catch {
+    return null;
+  }
+};
+
+const setStoredTheme = (theme) => {
+  try {
+    localStorage.setItem("theme", theme);
+  } catch {
+    // The visual toggle should still work if storage is unavailable.
+  }
+};
+
+const setTheme = (isDark) => {
+  root.classList.toggle("dark", isDark);
+  toggle?.setAttribute("aria-pressed", String(isDark));
+};
+
+const savedTheme = getStoredTheme();
+const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+
+setTheme(savedTheme ? savedTheme === "dark" : Boolean(prefersDark));
 
 toggle?.addEventListener("click", () => {
-  const isDark = root.classList.toggle("dark");
-  localStorage.setItem("theme", isDark ? "dark" : "light");
+  const isDark = !root.classList.contains("dark");
+  setTheme(isDark);
+  setStoredTheme(isDark ? "dark" : "light");
 });
 
 const blogSearch = document.querySelector(".blog-search-input");
