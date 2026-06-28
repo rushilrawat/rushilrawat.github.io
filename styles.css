@@ -355,10 +355,11 @@ svg {
 
 .portrait-wrap {
   position: relative;
-  width: min(100%, clamp(390px, 45vw, 610px));
+  width: min(100%, clamp(316px, 36.45vw, 494px));
   aspect-ratio: 1;
   justify-self: center;
   isolation: isolate;
+  transform: translateY(0);
 }
 
 .portrait-circle {
@@ -366,7 +367,7 @@ svg {
   top: 42%;
   left: 52%;
   z-index: 0;
-  width: 72%;
+  width: 79.2%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--olive-circle);
@@ -399,6 +400,7 @@ svg {
   object-fit: contain;
   object-position: center;
   filter: none;
+  transform: translateY(5px);
 }
 
 .scroll-cue {
@@ -1342,6 +1344,7 @@ svg {
     grid-column: 2;
     grid-row: 2;
     width: clamp(230px, 32vw, 300px);
+    transform: translateY(0);
   }
 
   .portrait-dots {
@@ -1470,6 +1473,7 @@ svg {
 
   .portrait-wrap {
     width: clamp(112px, 28vw, 140px);
+    transform: translateY(0);
   }
 
   .portrait-dots {
