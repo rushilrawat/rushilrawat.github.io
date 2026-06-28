@@ -1,6 +1,8 @@
 const root = document.documentElement;
 const toggle = document.querySelector(".theme-toggle");
-const posts = Array.isArray(window.BLOG_POSTS) ? window.BLOG_POSTS : [];
+const posts = (Array.isArray(window.BLOG_POSTS) ? window.BLOG_POSTS : [])
+  .slice()
+  .sort((a, b) => new Date(`${b.date}T00:00:00`) - new Date(`${a.date}T00:00:00`));
 
 const formatDate = (dateString) =>
   new Intl.DateTimeFormat("en", {
@@ -70,6 +72,14 @@ const createElement = (tag, className, text) => {
 };
 
 const articleUrl = (slug) => `post.html?slug=${encodeURIComponent(slug)}`;
+
+const blockText = (block) => {
+  if (Array.isArray(block.items)) {
+    return block.items.join(" ");
+  }
+
+  return [block.label, block.text, block.caption, block.alt].filter(Boolean).join(" ");
+};
 
 const renderBlogIndex = () => {
   const blogList = document.querySelector(".blog-list");
@@ -159,12 +169,38 @@ const renderBlogIndex = () => {
 
   const render = () => {
     const normalizedQuery = currentQuery.toLowerCase();
-    const filteredPosts = posts.filter((post) =>
-      [post.title, post.category, post.summary]
-        .join(" ")
-        .toLowerCase()
-        .includes(normalizedQuery),
-    );
+    const filteredPosts = posts
+      .map((post, index) => {
+        if (!normalizedQuery) {
+          return { post, rank: 0, index };
+        }
+
+        const title = post.title.toLowerCase();
+        const category = post.category.toLowerCase();
+        const summary = post.summary.toLowerCase();
+        const body = (post.body || []).map(blockText).join(" ").toLowerCase();
+
+        if (title.includes(normalizedQuery)) {
+          return { post, rank: 1, index };
+        }
+
+        if (category.includes(normalizedQuery)) {
+          return { post, rank: 2, index };
+        }
+
+        if (summary.includes(normalizedQuery)) {
+          return { post, rank: 3, index };
+        }
+
+        if (body.includes(normalizedQuery)) {
+          return { post, rank: 4, index };
+        }
+
+        return null;
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.rank - b.rank || a.index - b.index)
+      .map((result) => result.post);
     const totalPages = Math.max(1, Math.ceil(filteredPosts.length / pageSize));
 
     currentPage = Math.min(currentPage, totalPages);
@@ -290,8 +326,8 @@ const renderPostPage = () => {
     }
   });
 
-  const nextPost = posts[postIndex + 1];
-  const previousPost = posts[postIndex - 1];
+  const nextPost = posts[postIndex - 1];
+  const previousPost = posts[postIndex + 1];
   const footer = createElement("nav", "article-post-nav");
   footer.setAttribute("aria-label", "Post navigation");
 
@@ -299,13 +335,13 @@ const renderPostPage = () => {
   if (nextPost) {
     nextLink.href = articleUrl(nextPost.slug);
     nextLink.append(
-      createElement("span", "article-footer-label", "Next \u2192"),
+      createElement("span", "article-footer-label", "\u2190 Next"),
       createElement("strong", "", nextPost.title),
     );
   } else {
     nextLink.setAttribute("aria-disabled", "true");
     nextLink.append(
-      createElement("span", "article-footer-label", "Next \u2192"),
+      createElement("span", "article-footer-label", "\u2190 Next"),
       createElement("strong", "", "No next post"),
     );
   }
@@ -314,18 +350,18 @@ const renderPostPage = () => {
   if (previousPost) {
     previousLink.href = articleUrl(previousPost.slug);
     previousLink.append(
-      createElement("span", "article-footer-label", "\u2190 Previous"),
+      createElement("span", "article-footer-label", "Previous \u2192"),
       createElement("strong", "", previousPost.title),
     );
   } else {
     previousLink.setAttribute("aria-disabled", "true");
     previousLink.append(
-      createElement("span", "article-footer-label", "\u2190 Previous"),
+      createElement("span", "article-footer-label", "Previous \u2192"),
       createElement("strong", "", "No previous post"),
     );
   }
 
-  footer.append(previousLink, nextLink);
+  footer.append(nextLink, previousLink);
   article.replaceChildren(back, header, body, footer);
 };
 

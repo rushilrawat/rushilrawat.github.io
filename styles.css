@@ -1293,39 +1293,41 @@ svg {
 
 @media (max-width: 1100px) {
   .site-nav {
-    gap: 28px;
+    gap: clamp(24px, 4vw, 36px);
   }
 
   .hero {
-    grid-template-columns: max-content clamp(230px, 32vw, 300px);
+    --hero-portrait-size: clamp(112px, 36.45vw, 494px);
+    grid-template-columns: minmax(0, 1fr) var(--hero-portrait-size);
     align-items: center;
-    gap: 22px 16px;
+    gap: 22px clamp(22px, 3vw, 32px);
     min-height: max(760px, calc(100svh - 86px));
     padding-top: 58px;
     padding-bottom: 92px;
   }
 
   .hero-copy {
-    display: contents;
+    display: block;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
   }
 
   .eyebrow {
-    grid-column: 1 / -1;
+    grid-column: auto;
   }
 
   .hero h1 {
-    grid-column: 1;
-    font-size: 82px;
+    grid-column: auto;
+    font-size: clamp(76px, 10vw, 116px);
   }
 
   .hero-text {
-    grid-column: 1 / -1;
     max-width: 620px;
     margin-top: 4px;
   }
 
   .hero-actions {
-    grid-column: 1 / -1;
     gap: 14px;
     margin-top: 12px;
   }
@@ -1335,15 +1337,12 @@ svg {
     padding: 0 18px;
   }
 
-  .availability,
-  .currently {
-    grid-column: 1 / -1;
-  }
-
   .portrait-wrap {
     grid-column: 2;
-    grid-row: 2;
-    width: clamp(230px, 32vw, 300px);
+    grid-row: 1;
+    justify-self: end;
+    align-self: center;
+    width: var(--hero-portrait-size);
     transform: translateY(0);
   }
 
@@ -1416,9 +1415,9 @@ svg {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) clamp(112px, 28vw, 140px);
+    grid-template-columns: minmax(0, 1fr) var(--hero-portrait-size);
     align-items: center;
-    gap: 14px 6px;
+    gap: 14px clamp(22px, 4vw, 32px);
     min-height: max(620px, calc(100svh - 72px));
     padding-top: 42px;
     padding-bottom: 82px;
@@ -1430,7 +1429,7 @@ svg {
   }
 
   .hero h1 {
-    font-size: clamp(38px, 10vw, 58px);
+    font-size: clamp(42px, 10.5vw, 76px);
   }
 
   .hero-text {
@@ -1472,8 +1471,9 @@ svg {
   }
 
   .portrait-wrap {
-    width: clamp(112px, 28vw, 140px);
-    transform: translateY(0);
+    justify-self: end;
+    width: var(--hero-portrait-size);
+    transform: translateY(-16px);
   }
 
   .portrait-dots {
@@ -1729,25 +1729,61 @@ svg {
   }
 
   .hero h1 {
-    font-size: clamp(34px, 9.5vw, 42px);
+    grid-column: 1;
+    grid-row: 2;
+    font-size: clamp(34px, 10.5vw, 46px);
   }
 
   .hero {
+    align-content: center;
+    grid-template-columns: minmax(0, 1fr) var(--hero-portrait-size);
     min-height: max(610px, calc(100svh - 58px));
   }
 
+  .hero-copy {
+    display: contents;
+  }
+
+  .eyebrow {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
   .hero-text {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 12px;
     font-size: 14px;
   }
 
-  .btn {
-    min-width: 0;
-    padding: 0 12px;
-    font-size: 13px;
+  .hero-actions {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    width: 100%;
+  }
+
+  .availability {
+    grid-column: 1 / -1;
+    grid-row: 5;
+  }
+
+  .currently {
+    grid-column: 1 / -1;
+    grid-row: 6;
   }
 
   .portrait-wrap {
-    width: clamp(104px, 28vw, 116px);
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    transform: translateY(-18px);
+  }
+
+  .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 12px;
+    font-size: 13px;
   }
 
   .portrait-wrap img {
@@ -1784,5 +1820,11 @@ svg {
 
   .article-body h2 {
     font-size: 27px;
+  }
+}
+
+@media (max-width: 399px) {
+  .portrait-wrap {
+    transform: translateY(-24px);
   }
 }
