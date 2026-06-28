@@ -325,7 +325,7 @@ const renderPostPage = () => {
     );
   }
 
-  footer.append(nextLink, previousLink);
+  footer.append(previousLink, nextLink);
   article.replaceChildren(back, header, body, footer);
 };
 
