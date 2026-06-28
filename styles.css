@@ -1320,7 +1320,7 @@ svg {
 
   .hero h1 {
     grid-column: auto;
-    font-size: clamp(84px, calc(6vw + 42px), 116px);
+    font-size: clamp(88px, calc(5vw + 52px), 116px);
   }
 
   .hero-text {
@@ -1430,7 +1430,7 @@ svg {
   }
 
   .hero h1 {
-    font-size: clamp(58px, calc(5vw + 40px), 76px);
+    font-size: clamp(68px, calc(3.5vw + 52px), 82px);
   }
 
   .hero-text {
@@ -1732,13 +1732,14 @@ svg {
   .hero h1 {
     grid-column: 1;
     grid-row: 2;
-    font-size: 46px;
+    align-self: end;
+    font-size: 50px;
     transform: translateX(-0.025em);
   }
 
   .hero {
     align-content: center;
-    --hero-portrait-size: clamp(58px, 18vw, 96px);
+    --hero-portrait-size: clamp(84px, 25vw, 128px);
     grid-template-columns: minmax(0, 1fr) var(--hero-portrait-size);
     gap: 14px 10px;
     min-height: max(610px, calc(100svh - 58px));
@@ -1779,8 +1780,8 @@ svg {
   .portrait-wrap {
     grid-column: 2;
     grid-row: 2;
-    align-self: center;
-    transform: translateY(-18px);
+    align-self: end;
+    transform: translateY(0);
   }
 
   .btn {
@@ -1824,11 +1825,5 @@ svg {
 
   .article-body h2 {
     font-size: 27px;
-  }
-}
-
-@media (max-width: 399px) {
-  .portrait-wrap {
-    transform: translateY(-24px);
   }
 }
