@@ -360,7 +360,7 @@ svg {
   aspect-ratio: 1;
   justify-self: center;
   isolation: isolate;
-  transform: translateY(0);
+  transform: translateY(-28px);
 }
 
 .portrait-circle {
@@ -1344,7 +1344,7 @@ svg {
     justify-self: end;
     align-self: center;
     width: var(--hero-portrait-size);
-    transform: translateY(0);
+    transform: translateY(-28px);
   }
 
   .portrait-dots {
@@ -1474,7 +1474,7 @@ svg {
   .portrait-wrap {
     justify-self: end;
     width: var(--hero-portrait-size);
-    transform: translateY(-16px);
+    transform: translateY(-24px);
   }
 
   .portrait-dots {
