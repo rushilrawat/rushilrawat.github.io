@@ -1,6 +1,6 @@
 window.BLOG_POSTS = [
   {
-    slug: "building-software-for-a-city-that-never-sleeps",
+    slug: "blog-test-1",
     title: "Lorem ipsum style sampler",
     date: "2026-06-18",
     category: "Writing System",
