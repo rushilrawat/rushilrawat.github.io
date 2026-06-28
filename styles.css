@@ -400,7 +400,7 @@ svg {
   object-fit: contain;
   object-position: center;
   filter: none;
-  transform: translateY(5px);
+  transform: translateY(20px);
 }
 
 .scroll-cue {
