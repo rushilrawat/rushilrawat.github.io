@@ -14,7 +14,7 @@
   --accent-hover: #435641;
   --link-hover: #39493a;
   --light-olive: #eef2eb;
-  --olive-circle: rgba(220, 230, 215, 0.85);
+  --olive-circle: rgba(220, 230, 215, 0.72);
   --tag-background: #f2f0ea;
   --tag-border: #e2dbd0;
   --tag-text: #4c514b;
@@ -42,7 +42,7 @@
   --accent-hover: #b8d2b0;
   --link-hover: #c7dfc0;
   --light-olive: #263020;
-  --olive-circle: rgba(74, 92, 68, 0.85);
+  --olive-circle: rgba(74, 92, 68, 0.66);
   --tag-background: #262520;
   --tag-border: #393733;
   --tag-text: #d2cdc4;
@@ -214,7 +214,7 @@ svg {
   color: var(--accent);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
 }
 
@@ -255,7 +255,7 @@ svg {
   gap: 10px;
   min-width: 150px;
   min-height: 48px;
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 0 24px;
   text-decoration: none;
   font-size: 14px;
@@ -302,7 +302,7 @@ svg {
 .availability {
   display: inline-flex;
   margin: 32px 0 0;
-  border-radius: 7px;
+  border-radius: 4px;
   background: var(--alternate);
   color: var(--accent);
   padding: 8px 13px;
@@ -368,7 +368,7 @@ svg {
   top: 42%;
   left: 52%;
   z-index: 0;
-  width: 79.2%;
+  width: 76%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--olive-circle);
@@ -386,9 +386,9 @@ svg {
   z-index: 1;
   top: 26px;
   right: 18px;
-  width: 156px;
-  height: 164px;
-  opacity: 0.72;
+  width: 132px;
+  height: 144px;
+  opacity: 0.34;
 }
 
 .portrait-wrap img {
@@ -577,13 +577,13 @@ svg {
   display: inline-flex;
   align-items: center;
   min-height: 22px;
-  border: 1px solid var(--tag-border);
-  border-radius: 4px;
-  background: var(--tag-background);
+  border: 1px solid var(--divider);
+  border-radius: 3px;
+  background: transparent;
   color: var(--tag-text);
   padding: 3px 8px 2px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
 }
 
@@ -610,8 +610,9 @@ svg {
   place-items: center;
   width: 64px;
   height: 64px;
-  border-radius: 8px;
-  background: var(--tag-background);
+  border: 1px solid var(--divider);
+  border-radius: 4px;
+  background: transparent;
   color: var(--accent);
 }
 
@@ -689,9 +690,9 @@ svg {
   align-items: center;
   gap: 32px;
   margin-top: 96px;
-  padding: 42px 32px;
+  padding: 40px 32px;
   border-top: 1px solid var(--divider);
-  background: var(--alternate);
+  background: transparent;
   text-align: center;
 }
 
@@ -716,7 +717,7 @@ svg {
 .dot-field {
   width: 148px;
   height: 96px;
-  opacity: 0.72;
+  opacity: 0;
 }
 
 .dot-field.left {
