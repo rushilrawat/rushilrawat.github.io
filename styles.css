@@ -23,6 +23,7 @@
   --font-sans: Inter, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   --font-display: "Bodoni 72", Didot, "Iowan Old Style", Georgia, serif;
   --site-width: 1160px;
+  --home-section-gap: 64px;
   --timeline-axis: 14px;
 }
 
@@ -432,9 +433,24 @@ svg {
 }
 
 .section-with-rule {
-  margin-top: 96px;
-  padding-top: 34px;
+  margin-top: var(--home-section-gap);
+  padding-top: var(--home-section-gap);
   border-top: 1px solid var(--divider);
+}
+
+#experience.section-with-rule {
+  margin-top: 0;
+  border-top: 0;
+}
+
+#experience .experience-item:last-child {
+  padding-bottom: 0;
+}
+
+#selected-work .project-item:last-child {
+  min-height: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .section-heading {
@@ -497,6 +513,10 @@ svg {
   content: "";
 }
 
+#experience .experience-list::before {
+  bottom: 27px;
+}
+
 .experience-item {
   display: grid;
   grid-template-columns: 44px 110px minmax(0, 1fr);
@@ -518,6 +538,40 @@ svg {
   margin-left: calc(var(--timeline-axis) - 5.5px);
   border-radius: 50%;
   background: var(--accent);
+}
+
+.timeline-more-cue {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 22px 0 0 calc(var(--timeline-axis) - 22px);
+  color: var(--accent);
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.timeline-more-cue:hover {
+  color: var(--accent-hover);
+  transform: translateY(2px);
+}
+
+.timeline-more-cue:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.timeline-more-cue span {
+  width: 18px;
+  height: 18px;
+  border-right: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  font-size: 0;
+  transform: translateY(-5px) rotate(45deg);
 }
 
 .date {
@@ -688,7 +742,7 @@ svg {
   grid-template-columns: 1fr minmax(280px, 560px) 1fr;
   align-items: center;
   gap: 32px;
-  margin-top: 96px;
+  margin-top: var(--home-section-gap);
   padding: 42px 32px;
   border-top: 1px solid var(--divider);
   background: var(--alternate);
@@ -855,11 +909,6 @@ svg {
 .archive-section {
   padding-top: 46px;
   padding-bottom: 88px;
-}
-
-.archive-project-list,
-.timeline-archive-list {
-  border-top: 1px solid var(--divider);
 }
 
 .archive-label {
@@ -1601,7 +1650,7 @@ svg {
 
   .section-with-rule,
   .cta-band {
-    margin-top: 96px;
+    margin-top: var(--home-section-gap);
   }
 
   .section-heading {
