@@ -916,6 +916,16 @@ svg {
   margin: 0 0 8px;
 }
 
+.timeline-entry-type {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .blog-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
@@ -1526,6 +1536,10 @@ svg {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
     border-top: 0;
+  }
+
+  .timeline-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .archive-stats div {
