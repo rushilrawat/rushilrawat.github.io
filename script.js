@@ -246,6 +246,11 @@ const renderPostPage = () => {
 
   document.title = `${post.title} | Rushil Rawat`;
 
+  const canonicalUrl = new URL(articleUrl(post.slug), "https://rushilrawat.com/").href;
+  document
+    .querySelector('link[rel="canonical"]')
+    ?.setAttribute("href", canonicalUrl);
+
   const description = document.querySelector('meta[name="description"]');
   description?.setAttribute("content", post.summary);
 
@@ -255,6 +260,30 @@ const renderPostPage = () => {
   document
     .querySelector('meta[property="og:description"]')
     ?.setAttribute("content", post.summary);
+  document
+    .querySelector('meta[property="og:url"]')
+    ?.setAttribute("content", canonicalUrl);
+
+  const articleSchema = document.querySelector("#article-schema");
+  if (articleSchema) {
+    articleSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.title,
+      description: post.summary,
+      datePublished: post.date,
+      url: canonicalUrl,
+      author: {
+        "@type": "Person",
+        name: "Rushil Rawat",
+        url: "https://rushilrawat.com/",
+      },
+      publisher: {
+        "@type": "Person",
+        name: "Rushil Rawat",
+      },
+    });
+  }
 
   const back = createElement("a", "article-back", "\u2190 Back to blog");
   back.href = "blog.html";

@@ -1,0 +1,16 @@
+# Rushil Rawat
+
+> Portfolio of Rushil Rawat, a UMass Amherst Computer Science + Business student building software, AI systems, and infrastructure.
+
+## Primary pages
+
+- [Home](https://rushilrawat.com/): Introduction, current work, selected projects, and contact.
+- [Projects](https://rushilrawat.com/projects.html): Full project archive with live demos and repositories.
+- [Timeline](https://rushilrawat.com/timeline.html): Professional experience, leadership, and recognition.
+- [Blog](https://rushilrawat.com/blog.html): Writing on software, AI, infrastructure, products, and learning.
+
+## Contact
+
+- Email: rawat.rushil.work@gmail.com
+- GitHub: https://github.com/rushilrawat
+- LinkedIn: https://www.linkedin.com/in/rushilrawat
