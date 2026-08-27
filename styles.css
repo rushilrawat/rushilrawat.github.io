@@ -1045,6 +1045,35 @@ svg {
   padding-bottom: 78px;
 }
 
+.blog-page {
+  position: relative;
+}
+
+.blog-coming-soon {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--background) 70%, transparent);
+  pointer-events: none;
+}
+
+.blog-coming-soon p {
+  margin: 0;
+  color: var(--hero-name);
+  font-family: var(--font-display);
+  font-size: clamp(76px, 12vw, 188px);
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.blog-coming-soon span {
+  color: var(--accent);
+}
+
 .blog-list {
   border-top: 1px solid var(--divider);
 }
