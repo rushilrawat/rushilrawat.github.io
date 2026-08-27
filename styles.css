@@ -655,6 +655,14 @@ svg {
   border-bottom: 1px solid var(--divider);
 }
 
+.archive-project-list .project-item-harmscope {
+  order: -2;
+}
+
+.archive-project-list .project-item-capitolwatch {
+  order: -1;
+}
+
 .project-item + .project-item {
   padding-top: 24px;
 }
