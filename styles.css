@@ -294,6 +294,65 @@ svg {
   background: var(--alternate);
 }
 
+.resume-picker {
+  position: relative;
+  min-width: 150px;
+}
+
+.resume-picker summary {
+  width: 100%;
+  cursor: pointer;
+  list-style: none;
+}
+
+.resume-picker summary::-webkit-details-marker {
+  display: none;
+}
+
+.resume-picker[open] summary span {
+  transform: rotate(180deg);
+}
+
+.resume-picker summary span {
+  transition: transform 160ms ease;
+}
+
+.resume-menu {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 244px;
+  overflow: hidden;
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  background: var(--background);
+  box-shadow: 0 12px 30px rgba(29, 27, 25, 0.12);
+}
+
+.resume-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 50px;
+  padding: 10px 14px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.resume-option + .resume-option {
+  border-top: 1px solid var(--divider);
+}
+
+a.resume-option:hover {
+  background: var(--alternate);
+  color: var(--accent);
+}
+
 .btn.compact {
   min-width: 132px;
   min-height: 40px;
@@ -1596,6 +1655,10 @@ svg {
     padding: 0 18px;
   }
 
+  .resume-picker {
+    min-width: 140px;
+  }
+
   .portrait-wrap {
     grid-column: 2;
     grid-row: 1;
@@ -1730,6 +1793,16 @@ svg {
     flex: 1 1 0;
     min-width: 136px;
     padding: 0 18px;
+  }
+
+  .resume-picker {
+    flex: 1 1 0;
+    min-width: 136px;
+  }
+
+  .hero-actions > .btn,
+  .hero-actions > .resume-picker {
+    flex: 0 0 calc(50% - 6px);
   }
 
   .availability {
@@ -2108,6 +2181,10 @@ svg {
     min-width: 0;
     padding: 0 12px;
     font-size: 13px;
+  }
+
+  .resume-picker {
+    min-width: 0;
   }
 
   .portrait-wrap img {
