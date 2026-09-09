@@ -243,6 +243,7 @@ svg {
 }
 
 .hero-actions {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -320,9 +321,9 @@ svg {
 .resume-menu {
   position: absolute;
   z-index: 10;
-  top: calc(100% + 10px);
-  right: 0;
-  width: 244px;
+  top: 0;
+  left: calc(100% + 12px);
+  width: 176px;
   overflow: hidden;
   border: 1px solid var(--divider);
   border-radius: 6px;
@@ -1789,6 +1790,10 @@ a.resume-option:hover {
     margin-top: 14px;
   }
 
+  .hero-actions:has(.resume-picker[open]) {
+    padding-bottom: 112px;
+  }
+
   .btn {
     flex: 1 1 0;
     min-width: 136px;
@@ -1796,8 +1801,15 @@ a.resume-option:hover {
   }
 
   .resume-picker {
+    position: static;
     flex: 1 1 0;
     min-width: 136px;
+  }
+
+  .resume-menu {
+    top: 58px;
+    left: 0;
+    width: 244px;
   }
 
   .hero-actions > .btn,
