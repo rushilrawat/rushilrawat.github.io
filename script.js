@@ -49,6 +49,23 @@ document.querySelectorAll("[data-count-selector]").forEach((count) => {
   count.textContent = String(value).padStart(2, "0");
 });
 
+const experienceTimeline = document.querySelector("#experience .experience-list");
+const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+if (experienceTimeline && !prefersReducedMotion && "IntersectionObserver" in window) {
+  experienceTimeline.classList.add("timeline-reveal-pending");
+
+  const timelineObserver = new window.IntersectionObserver((entries, observer) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      experienceTimeline.classList.remove("timeline-reveal-pending");
+      experienceTimeline.classList.add("timeline-revealed");
+      observer.disconnect();
+    }
+  }, { threshold: 0.15 });
+
+  timelineObserver.observe(experienceTimeline);
+}
+
 toggle?.addEventListener("click", () => {
   const isDark = !root.classList.contains("dark");
   setTheme(isDark);
@@ -248,9 +265,11 @@ const renderPostPage = () => {
 
   if (!post) {
     article.replaceChildren();
+    const notFoundTitle = createElement("h1");
+    notFoundTitle.append(createElement("span", "heading-highlight", "Post not found"));
     article.append(
       createElement("a", "article-back", "\u2190 Back to blog"),
-      createElement("h1", "", "Post not found"),
+      notFoundTitle,
       createElement("p", "article-dek", "That article could not be found."),
     );
     return;
@@ -301,9 +320,11 @@ const renderPostPage = () => {
   back.href = "blog.html";
 
   const header = createElement("header", "article-header");
+  const postTitle = createElement("h1");
+  postTitle.append(createElement("span", "heading-highlight", post.title));
   header.append(
     createElement("p", "article-kicker", post.category),
-    createElement("h1", "", post.title),
+    postTitle,
     createElement("p", "article-dek", post.summary),
   );
 
