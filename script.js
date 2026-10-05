@@ -37,6 +37,18 @@ const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
 
 setTheme(savedTheme ? savedTheme === "dark" : Boolean(prefersDark));
 
+document.querySelectorAll("[data-count-selector]").forEach((count) => {
+  const items = [...document.querySelectorAll(count.dataset.countSelector)];
+  const filteredItems = count.dataset.countValue
+    ? items.filter((item) => item.textContent.trim() === count.dataset.countValue)
+    : items;
+  const value = count.dataset.countMode === "unique"
+    ? new Set(items.map((item) => item.textContent.trim())).size
+    : filteredItems.length;
+
+  count.textContent = String(value).padStart(2, "0");
+});
+
 toggle?.addEventListener("click", () => {
   const isDark = !root.classList.contains("dark");
   setTheme(isDark);
