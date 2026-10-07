@@ -72,6 +72,57 @@ toggle?.addEventListener("click", () => {
   setStoredTheme(isDark ? "dark" : "light");
 });
 
+const notFoundPeriod = document.querySelector(".not-found-period");
+const notFoundArt = document.querySelector(".not-found-art");
+const notFoundArtToggle = document.querySelector(".not-found-art-toggle");
+const notFoundArtImage = notFoundArtToggle?.querySelector("img");
+const notFoundDinosaurTrigger = document.querySelector(".not-found-dinosaur-trigger");
+const notFoundReveal = document.querySelector(".not-found-reveal");
+const notFoundRunner = document.querySelector(".not-found-runner");
+
+notFoundArtToggle?.addEventListener("click", () => {
+  const isAwake = notFoundArtToggle.getAttribute("aria-expanded") !== "true";
+  const imageSource = isAwake
+    ? notFoundArtImage?.dataset.rawrSrc
+    : notFoundArtImage?.dataset.smileSrc;
+
+  notFoundArt?.classList.toggle("is-awake", isAwake);
+  if (imageSource) {
+    notFoundArtImage.setAttribute("src", imageSource);
+  }
+  notFoundArtToggle.setAttribute("aria-expanded", String(isAwake));
+  notFoundArtToggle.setAttribute(
+    "aria-label",
+    isAwake ? "Restore the smiling pixel face" : "Make the pixel face say rawr",
+  );
+  if (notFoundReveal) {
+    notFoundReveal.hidden = !isAwake;
+  }
+});
+
+notFoundDinosaurTrigger?.addEventListener("click", () => {
+  if (notFoundRunner) {
+    notFoundRunner.classList.remove("is-running");
+    void notFoundRunner.offsetWidth;
+    notFoundRunner.classList.add("is-running");
+  }
+});
+
+notFoundRunner?.addEventListener("animationend", (event) => {
+  if (event.target === notFoundRunner) {
+    notFoundRunner.classList.remove("is-running");
+  }
+});
+
+notFoundPeriod?.addEventListener("click", () => {
+  if (notFoundPeriod.classList.contains("is-falling")) {
+    return;
+  }
+
+  notFoundPeriod.classList.add("is-falling");
+  notFoundPeriod.setAttribute("aria-label", "The period has fallen");
+});
+
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (event) => {
     const target = document.querySelector(link.getAttribute("href"));
