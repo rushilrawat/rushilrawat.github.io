@@ -1763,12 +1763,30 @@ a.resume-option:hover {
 }
 
 .not-found-art-toggle {
+  position: relative;
   display: block;
   width: 100%;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
+}
+
+.not-found-art-toggle::after {
+  position: absolute;
+  top: 56.06%;
+  left: 46.45%;
+  width: 2.75%;
+  height: 6.84%;
+  background: var(--background);
+  clip-path: polygon(24% 0, 76% 0, 100% 18%, 100% 82%, 76% 100%, 24% 100%, 0 82%, 0 18%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+.not-found-art.is-awake .not-found-art-toggle::after {
+  opacity: 1;
 }
 
 .not-found-art-toggle:focus-visible {
