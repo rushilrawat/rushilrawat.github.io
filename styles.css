@@ -939,6 +939,16 @@ a.resume-option:hover {
   line-height: 1;
 }
 
+.home-page #experience .body-copy,
+.home-page #selected-work .project-copy p {
+  font-size: calc(14px - 0.25rem);
+}
+
+.home-page #experience .skills span,
+.home-page #selected-work .skills span {
+  font-size: calc(12px - 0.25rem);
+}
+
 .project-list {
   margin-top: 2px;
 }
