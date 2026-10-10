@@ -898,6 +898,10 @@ a.resume-option:hover {
   line-height: 1.14;
 }
 
+.experience-copy h3.sga-role-title {
+  word-spacing: 0.18em;
+}
+
 .organization {
   margin: 4px 0 8px;
   color: var(--accent);
